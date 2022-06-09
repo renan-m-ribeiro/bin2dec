@@ -2,16 +2,13 @@ window.onload = function () {
 
     const input = document.querySelector('#inputBinary')
     
-    console.log(input);
-    
     input.addEventListener('keyup', () => {
         const inputValue = getInputValue('#inputBinary').split('')
         const decimalNumber = multiplyArrays(inputValue, createCalcArray(inputValue))
                               .reduce((acc,current) => acc+current)
-        
-        console.log(decimalNumber);
+
+        showValue('#result', decimalNumber)
     })
-    
     
     const multiplyArrays = (array1 , array2) => {
         let result = []
@@ -34,6 +31,10 @@ window.onload = function () {
     const getInputValue = (element) => {
         let input = document.querySelector(element).value
         return input;
+    }
+
+    const showValue = (selector, value) => {
+        document.querySelector(selector).innerHTML = value
     }
 
 
